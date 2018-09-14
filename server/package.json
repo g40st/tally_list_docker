@@ -1,0 +1,33 @@
+{
+  "name": "docker_tally_list_api",
+  "version": "1.0.0",
+  "description": "REST API ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/g40st/docker_tally_list_API.git"
+  },
+  "author": "Christian Högerle (christian@hoegerle-home.de)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/g40st/docker_tally_list_API/issues"
+  },
+  "homepage": "https://github.com/g40st/docker_tally_list_API#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "bluebird": "^3.5.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "pg-promise": "^8.4.6",
+    "morgan": "^1.9.0",
+    "debug": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}

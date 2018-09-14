@@ -1,0 +1,28 @@
+version: "3"
+services:
+  db:
+    volumes:
+      - ${PWD}/db/postgres_schema:/home/
+    ports:
+      - "5432:5432"
+  server:
+    environment:
+      - DEBUG=http
+    build:
+      dockerfile: ./Dockerfile_dev
+    volumes:
+      - ${PWD}/server/app.js:/app/app.js
+      - ${PWD}/server/index.js:/app/index.js
+      - ${PWD}/server/api:/app/api
+    ports:
+      - "3000:3000"
+  client:
+    build:
+      dockerfile: ./Dockerfile_dev
+    volumes:
+      - ${PWD}/client/src:/app/src
+    ports:
+      - "8080:8080"
+
+    
+     

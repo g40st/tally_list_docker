@@ -1,0 +1,22 @@
+version: "3"
+services:
+  db:
+    env_file:
+      - process.env
+    build: ./db
+  server:
+    build: ./server
+    links:
+      - db
+    env_file:
+      - process.env
+  client:
+    env_file:
+      - process.env
+    build: ./client
+    links:
+      - server
+
+    
+    
+      

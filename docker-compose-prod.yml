@@ -1,0 +1,16 @@
+version: "3"
+services:
+  server:
+    environment:
+      - NODE_ENV=production
+    build:
+      dockerfile: ./Dockerfile_prod
+    ports:
+      - "3000:3000"
+  client:
+    build:
+      dockerfile: ./Dockerfile_prod
+    ports:
+      - "80:80"
+
+    
