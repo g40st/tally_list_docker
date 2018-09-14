@@ -1,6 +1,7 @@
 # tally_list_docker
-This is a web-based tally list to track goods of users. 
+This is a web-based tally list to track goods of users.
 
+![tally_list](https://user-images.githubusercontent.com/7523395/45557221-6746a900-b83d-11e8-9ed2-be5a2da28105.gif)
 
 ## Dependencies
 * [node js](https://nodejs.org/en/) Server with RESTful API
@@ -70,6 +71,10 @@ docker-compose -f docker-compose.yml -f docker-compose-dev.yml up
   docker exec -t -u postgres your-db-container pg_dumpall -c > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
   
   cat your_dump.sql | docker exec -i your-db-container psql -Upostgres
+
+## Admin Panel
+
+![admin_panel](https://user-images.githubusercontent.com/7523395/45557262-7e859680-b83d-11e8-8599-f669ca44468e.gif)
 
 ## RESTful API
 
