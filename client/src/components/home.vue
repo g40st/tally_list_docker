@@ -1,7 +1,9 @@
 <template>
-  <div class="overview-table container">
+  <b-container class="overview-table">
     <br />
-    <table v-if="preparedDataAvailable" class="table table-striped table-bordered table-hover table-sm">
+    <spinner v-if="preparedDataAvailable === null" v-show="!error.flag"></spinner>    
+    
+    <table v-else-if="preparedDataAvailable" class="table table-striped table-bordered table-hover table-sm">
       <thead class="bg-primary">
         <tr>
           <th>#</th>
@@ -20,11 +22,12 @@
    
     <noData v-else v-show="!error.flag"></noData> 
 
-  </div>
+  </b-container>
 </template>
 
 <script>
 import NoData from '../helper_components/noData'
+import Spinner from '../helper_components/spinner'
 import {HTTP} from '../helpers/http_common.js';
 import errorObject from '../helpers/error_object'
 
@@ -32,7 +35,7 @@ export default {
   name: 'Home',
   data () {
     return {
-      preparedDataAvailable: false,
+      preparedDataAvailable: null,
       productsArr: [],
       usersArr: [],
       error: []
@@ -53,12 +56,13 @@ export default {
     });
   },
   components: {
-    'noData': NoData
+    'noData': NoData,
+    'spinner': Spinner
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
- 
+
 </style>

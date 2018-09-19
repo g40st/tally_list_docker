@@ -1,7 +1,9 @@
 <template>
   <b-container fluid>
     <br />
-    <b-row v-if="preparedDataAvailable">
+    <spinner v-if="preparedDataAvailable === null" v-show="!error.flag"></spinner>  
+    
+    <b-row v-else-if="preparedDataAvailable">
       <b-col md="3" lg="2" xl="2" v-for="(user, user_index) in usersArr" :key="user.id">
         <b-card :title="user.name" style="max-width: 30rem;" >
           <p class="card-text">
@@ -25,6 +27,7 @@
 
 <script>
 import NoData from '../helper_components/noData'
+import Spinner from '../helper_components/spinner'
 import {HTTP} from '../helpers/http_common.js';
 import errorObject from '../helpers/error_object'
 
@@ -32,7 +35,7 @@ export default {
   name: 'Checkout',
   data () {
     return {
-      preparedDataAvailable: false,
+      preparedDataAvailable: null,
       productsArr: [],
       usersArr: [],
       gotAllProductIcons: true,
@@ -92,7 +95,8 @@ export default {
     });
   },
   components: {
-    'noData': NoData
+    'noData': NoData,
+    'spinner': Spinner
   }
 }
 </script>
