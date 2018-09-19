@@ -92,12 +92,20 @@ function preparedData(req, res, next) {
 /* 
   sysUser queries
 */
+function getAllSysUsers(req, res, next) {
+  queriesSysUser.getAllSysUsers(req,res,next,db);
+}
+
 function newSysUser(req, res, next) {
   queriesSysUser.newSysUser(req,res,next,db);
 }
 
 function loginSysUser(req, res, next) {
   queriesSysUser.loginSysUser(req,res,next,db);
+}
+
+function deleteSysUser(req, res, next) {
+  queriesSysUser.deleteSysUser(req,res,next,db);
 }
 
 module.exports = {
@@ -117,7 +125,10 @@ module.exports = {
   getOrderByUser: getOrderByUser,
   updateOrder: updateOrder,
   preparedData: preparedData,
+  getAllSysUsers: getAllSysUsers,
   newSysUser: newSysUser,
-  loginSysUser: loginSysUser   
+  loginSysUser: loginSysUser,
+  queriesUsers: queriesUsers,
+  deleteSysUser: deleteSysUser
 };
 

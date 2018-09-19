@@ -1,10 +1,25 @@
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 
+function getAllSysUsers(req, res, next, db) {
+  db.any('SELECT id, name FROM ' + process.env.POSTGRES_TBL_SYS_USER + ' ORDER BY id')
+    .then(function(data) {
+        res.status(200)
+        .json({
+          data: data,
+          message: 'Retrieved ALL sys users'
+        });
+    })
+    .catch(function(error) {
+      error.customMsg = "Could not get all sys users (DB Error)";
+      next(error);
+    });
+}
+
 function newSysUser(req, res, next, db) {
     if(req.body.user && req.body.pwd) {
       // TODO: check the name, if it is already in the db (duplication check)
-      bcrypt.hash(req.body.pwd, 10, (err, hash) => {
+      bcrypt.hash(req.body.pwd, 10, (error, hash) => {
         if(error) {
           error.customMsg = "Something went wrong (hashing)";
           next(error);
@@ -70,7 +85,24 @@ function loginSysUser(req, res, next, db) {
     }
 }
 
+function deleteSysUser(req, res, next, db) {
+  var userID = parseInt(req.params.userId);
+  db.result('DELETE FROM ' + process.env.POSTGRES_TBL_SYS_USER + ' WHERE id = $1', userID)
+    .then(function (result) {
+      res.status(200)
+        .json({
+          message: `Removed ${result.rowCount} user`
+        });
+    })
+    .catch(function(error) {
+      error.customMsg = "Could not delete user (DB Error)";
+      next(error); 
+    });
+}
+
 module.exports = {
-    newSysUser: newSysUser,
-    loginSysUser: loginSysUser   
+  newSysUser: newSysUser,
+  loginSysUser: loginSysUser,
+  getAllSysUsers: getAllSysUsers,
+  deleteSysUser: deleteSysUser   
 };
