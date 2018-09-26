@@ -105,12 +105,14 @@ docker-compose -f docker-compose.yml -f docker-compose-dev.yml up
   - http://localhost:3000/orders      GET
   - http://localhost:3000/orders      POST
   - http://localhost:3000/orders      PATCH Authentication needed
-  - http://localhost:3000/orders/:userId  GET Authentication needed
+  - http://localhost:3000/orders/:Id  GET Authentication needed
 ### prepared
   - http://localhost:3000/prepared      GET
 ### sysuser (admin panel)
-  - http://localhost:3000/sysuser/login      POST
-  - http://localhost:3000/sysuser/signup      POST Authentication needed
+  - http://localhost:3000/sysuser/         GET Authentication needed
+  - http://localhost:3000/sysuser/login    POST
+  - http://localhost:3000/sysuser/signup   POST Authentication needed
+  - http://localhost:3000/sysuser/:id      DELETE Authentication needed
 
 ## Products
 
