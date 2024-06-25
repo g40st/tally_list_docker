@@ -19,11 +19,11 @@ cd Downloads/tally_list_docker
 ```
   3) Built the images that are needed:
 ```shell
-docker-compose -f docker-compose.yml -f docker-compose-prod.yml build 
+docker compose -f docker-compose.yml -f docker-compose-prod.yml build 
 ```
   4) Start the images and build containers:
 ```shell
-docker-compose -f docker-compose.yml -f docker-compose-prod.yml up 
+docker compose -f docker-compose.yml -f docker-compose-prod.yml up 
 ```
   5) Now the system is ready: http://127.0.0.1/#/
   
@@ -45,11 +45,11 @@ cd Downloads/tally_list_docker
 ```
   3) Built the images that are needed:
  ```shell
-docker-compose -f docker-compose.yml -f docker-compose-dev.yml build 
+docker compose -f docker-compose.yml -f docker-compose-dev.yml build 
 ```   
   4) Start the images and build containers:
 ```shell
-docker-compose -f docker-compose.yml -f docker-compose-dev.yml up
+docker compose -f docker-compose.yml -f docker-compose-dev.yml up
 ```
    Node js and vue js will be started in dev mode. Therefore, nodemon and the dev env of vue js will be used. You can directly edit the source code in the repo of your local clone. The changed source will be automatically loaded.
 
